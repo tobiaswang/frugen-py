@@ -1,0 +1,67 @@
+{
+	"internal": {
+		"data": "0A B2 C3 D4",
+		"file": null
+	},
+	"chassis": {
+		"type": 10,
+		"part-number": "CHAS-C00L-12",
+		"serial-number": "45678",
+		"custom": [{
+			"type": "binary",
+			"data": "B1 4A 87"
+		}, {
+			"type": "binary",
+			"data": "C1 A1 21 32 23"
+		}]
+	},
+	"board": {
+		"language": 0,
+		"manufacturer-date": "2019/8/20 15:30:00",
+		"manufacturer": "Biggest International Corp.",
+		"product-name": "Some Cool Product",
+		"serial-number": "123456",
+		"part-number": "BRD-PN-345",
+		"file-id": "example1.json",
+		"custom": [{
+			"type": "binary",
+			"data": "01 23 DE AD BA BE"
+		}, {
+			"type": "ascii-latin1",
+			"data": "This is a text custom field"
+		}, {
+			"type": "ascii-latin1",
+			"data": "This is test2"
+		}]
+	},
+	"product": {
+		"language": 0,
+		"manufacturer": "Super OEM Company",
+		"product-name": "Label-engineered Super Product",
+		"part-number": "PRO-OEM-12345",
+		"product-version": "100.10.10",
+		"serial-number": "OEM12345",
+		"asset-tag": "Accounting Dept.",
+		"file-id": "example2.json",
+		"custom": [{
+			"type": "binary",
+			"data": "C0 C1 C2 C3 C4"
+		}, {
+			"type": "binary",
+			"data": "C0 01 BE EF"
+		}]
+	},
+	"multirecord": [{
+		"record-id": "C0",
+		"record-version": "02",
+		"data": "AB CD EF"
+	}, {
+		"record-id": "C0",
+		"record-version": "80",
+		"data": "AB CD EF"
+	}, {
+		"record-id": "C0",
+		"record-version": "02",
+		"data": "AB CD EF"
+	}]
+}
