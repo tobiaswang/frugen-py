@@ -110,16 +110,24 @@ def gen_board(data):
 
     out += struct.pack('B', data.get('language', 0))
 
-    date_str = data.get('manufacturer-date', 0)
-    t1 = datetime.strptime(date_str, '%Y/%m/%d %H:%M:%S')
-    t2 = datetime.strptime('1996/1/1 0:0:0', '%Y/%m/%d %H:%M:%S')
-    time_diff = (t1 - t2).days * 24 * 60 + (t1 - t2).seconds // 60
-    out += struct.pack(
-        'BBB',
-        (time_diff & 0xFF),
-        (time_diff & 0xFF00) >> 8,
-        (time_diff & 0xFF0000) >> 16,
-    )
+    try:
+        date_str = data.get('manufacturer-date', 0)
+        if date_str.strip() != "":
+            t1 = datetime.strptime(date_str, '%Y/%m/%d %H:%M:%S')
+            t2 = datetime.strptime('1996/1/1 0:0:0', '%Y/%m/%d %H:%M:%S')
+            time_diff = (t1 - t2).days * 24 * 60 + (t1 - t2).seconds // 60
+            out += struct.pack(
+                'BBB',
+                (time_diff & 0xFF),
+                (time_diff & 0xFF00) >> 8,
+                (time_diff & 0xFF0000) >> 16,
+            )
+        else:
+            out += struct.pack(
+                'BBB',
+                0x00,0x00,0x00)
+    except:
+        print("ERROR: manufacturer-date is not correct, should be like: 2019/8/20 15:30:00.")
 
     fields = ['manufacturer', 'product-name',
               'serial-number', 'part-number', 'file-id']
